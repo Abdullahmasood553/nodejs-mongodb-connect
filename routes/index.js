@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
                 articles: articles
             });
         }
-
     });
 //    let articles = [
 //     {
@@ -41,6 +40,42 @@ router.get('/', (req, res) => {
     //     title: 'Articles',
     //     articles:articles
     // });
+
+
+    // Add Submit POST Route
+
+});
+
+
+
+// Get Single Article
+router.get('/article/:id', (req, res) => {
+    Article.findById(req.params.id, (err, article) => {
+        //  console.log(article);
+        //  return;
+        res.render('article', {
+            article: article,
+            title: 'Article'
+        });
+    });
+});
+
+router.post('/articles/add', (req, res) => {
+    // console.log('Submitted');
+    // return;
+    let article = new Article();
+    article.title = req.body.title;
+    article.author = req.body.author;
+    article.body = req.body.body;
+
+    article.save((err) => {
+        if(err) {
+            console.log(err);
+            return;
+        } else {
+            res.redirect('/');
+        }
+    });
 });
 
 module.exports = router;

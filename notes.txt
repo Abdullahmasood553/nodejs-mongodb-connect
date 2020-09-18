@@ -1,0 +1,47 @@
+npm init (Create package.json file)
+
+npm start (It will run the server for node app)
+
+npm install --save express (install express)
+
+npm i express-ejs-layouts (install express layouts)
+
+
+npm i -D nodemon (Run the server continiously)
+
+npm i ejs   (install ejs template engine)
+
+For nodemon it should be inside the package.json file
+
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+
+npm install --save mongoose 
+
+Mongodb Commands
+
+
+
+use db
+db.dropDatabase()
+
+
+db.createCollection('articles');
+
+
+db.articles.insert();
+
+
+db.articles.insert({ title: "Article One", author: "Abdullah", body: "This is article one" })  
+
+db.articles.find()
+
+db.articles.find().pretty()
+
+
+
+npm install --save body-parser
+
+
