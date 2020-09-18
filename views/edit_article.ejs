@@ -1,0 +1,29 @@
+
+<div class="container">
+    <h3 class="bg-dark text-white p-4 text-center"><%= title %></h3>
+
+    <form action='/article/edit/<%= article.id %>' method="POST">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="title">Add Title</label>
+                <input type="text" name="title" class="form-control"  value="<%= article.title %>">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <label for="author">Author</label>
+                <input type="text" name="author" class="form-control"  value="<%= article.author %>">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <label for="body">Body</label>
+                <textarea name="body" id="" cols="30" rows="10" class="form-control" ><%= article.body %></textarea>
+            </div>
+        </div>
+
+        <input type="submit" value="Submit" class="btn btn-primary btn-sm mt-4">
+    </form>
+</div>

@@ -78,4 +78,49 @@ router.post('/articles/add', (req, res) => {
     });
 });
 
+
+// Load Edit Form
+router.get('/article/edit/:id', (req, res) => {
+    Article.findById(req.params.id, (err, article) => {
+        res.render('edit_article', {
+            article: article,
+            title: 'Edit Article'
+        });
+    });
+});
+
+// Update Submit Post Route
+router.post('/article/edit/:id', (req, res) => {
+    // console.log('Submitted');
+    // return;
+    let article = {};
+
+    article.title = req.body.title;
+    article.author = req.body.author;
+    article.body = req.body.body;
+
+    let query = {_id:req.params.id}
+
+    Article.update(query, article, (err) => {
+        if(err) {
+            console.log(err);
+            return;
+        } else {
+            res.redirect('/');
+        }
+    });
+});
+
+
+
+router.delete('/article/:id', (req, res) => {
+    let query = {_id: req.params.id}
+    Article.remove(query, (err) => {
+        if(err) {
+            console.log(err);
+        }
+        res.send('Success');
+    });
+});
+
 module.exports = router;
